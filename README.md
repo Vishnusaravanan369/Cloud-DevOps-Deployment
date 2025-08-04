@@ -28,4 +28,3 @@ This project demonstrates how to containerize a static front-end website using D
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
 
-- Add your HTML and CSS
