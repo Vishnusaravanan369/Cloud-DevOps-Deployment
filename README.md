@@ -21,10 +21,5 @@ This project demonstrates how to containerize a static front-end website using D
 
 ---
 
-## 📦 Dockerfile
 
-```Dockerfile
-
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
 
