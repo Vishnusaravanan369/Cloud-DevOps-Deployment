@@ -1,0 +1,90 @@
+# Project Structure
+
+my-website/
+├── index.html
+├── style.css
+└── Dockerfile
+
+  
+# Sample HTML and CSS Files
+
+  - index.html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>My Static Site</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <h1>Welcome to My Website</h1>
+      <p>This site is running from a Docker container on AWS EC2!</p>
+    </body>
+    </html>
+
+  
+  - Style.css
+      body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      }
+    
+      h1 {
+        color: #333;
+      }
+
+
+ # Dockerfile       
+        FROM nginx:alpine
+        COPY . /usr/share/nginx/html
+
+        
+ # Deploy on AWS EC2 Ubuntu
+  🔸 Step 1: Launch EC2 instance (Ubuntu)
+        - Go to AWS → EC2 → Launch Instance → Ubuntu 22.04
+        - Allow ports: HTTP (80), HTTPS (443), and SSH (22) in the security group
+
+  🔸 Step 2: Install Docker on EC2
+
+        sudo apt update
+        sudo apt install -y docker.io
+        sudo systemctl start docker
+        sudo systemctl enable docker
+        sudo usermod -aG docker ubuntu
+
+  🔸 Step 3: Transfer project files to EC2
+
+        sudo apt install git
+        git clone https://github.com/your-username/my-website.git
+        cd my-website
+
+  🔸 Step 4: Build and Run Docker Image
+
+        cd my-website
+        docker build -t static-site .
+        docker run -d -p 80:80 static-site
+
+  🔸 Step 5:View Your Website
+
+        Open your browser and go to:
+        http://<your-ec2-public-ip>
+
+        You shou ld see your static website!
+
+
+## 🤝 Connect with Me
+
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/your-vishnu-saravanan369). I'm always open to collaboration and tech discussions!
+
+
+        
+
+        
+
+
+
+  
+        
